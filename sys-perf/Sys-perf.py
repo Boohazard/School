@@ -1,12 +1,6 @@
 import psutil
 
 def get_size(bytes, suffix="B"):
-    """
-    Scale bytes to its proper format
-    e.g:
-        1253656 => '1.20MB'
-        1253656678 => '1.17GB'
-    """
     factor = 1024
     for unit in ["", "K", "M", "G", "T", "P"]:
         if bytes < factor:
@@ -18,8 +12,8 @@ print("="*40, "CPU Info", "="*40)
 print("Fysieke cores:", psutil.cpu_count(logical=False))
 print("Totale cores:", psutil.cpu_count(logical=True))
 cpufreq = psutil.cpu_freq()
-print(f"Max Frequency: {cpufreq.max:.2f}Mhz")
-print(f"Huidige Frequency: {cpufreq.current:.2f}Mhz")
+print(f"Max Frequentie: {cpufreq.max:.2f}Mhz")
+print(f"Huidige Frequentie: {cpufreq.current:.2f}Mhz")
 print(f"Totale CPU Gebruik: {psutil.cpu_percent(interval=.1, percpu=False)}%")
 
 print("="*40, "Memory info", "="*40)
