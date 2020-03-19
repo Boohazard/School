@@ -23,23 +23,23 @@ print(f"Huidige Frequency: {cpufreq.current:.2f}Mhz")
 print(f"Totale CPU Gebruik: {psutil.cpu_percent(interval=.1, percpu=False)}%")
 
 print("="*40, "Memory info", "="*40)
-svmem = psutil.virtual_memory()
-print(f"Totaal: {get_size(svmem.total)}")
-print(f"Bruikbaar: {get_size(svmem.available)}")
-print(f"Gebruikt: {get_size(svmem.used)}")
-print(f"Percentage: {svmem.percent}%")
+memory = psutil.virtual_memory()
+print(f"Totaal: {get_size(memory.total)}")
+print(f"Bruikbaar: {get_size(memory.available)}")
+print(f"Gebruikt: {get_size(memory.used)}")
+print(f"Percentage: {memory.percent}%")
 
 print("="*40, "Schijf info", "="*40)
 print("Partities en Gebruik:")
-partitions = psutil.disk_partitions()
-for partition in partitions:
-    print("="*10, f"Schijf: {partition.device}", "="*10)
-    print(f"  File system type: {partition.fstype}")
+schijf = psutil.disk_partitions()
+for schijf in schijf:
+    print("="*10, f"Schijf: {schijf.device}", "="*10)
+    print(f"  File system type: {schijf.fstype}")
     try:
-        partition_usage = psutil.disk_usage(partition.mountpoint)
+        schijf_gebruik = psutil.disk_usage(schijf.mountpoint)
     except PermissionError:
         continue
-    print(f"  Totaal grootte: {get_size(partition_usage.total)}")
-    print(f"  Gebruikt: {get_size(partition_usage.used)}")
-    print(f"  Vrij: {get_size(partition_usage.free)}")
-    print(f"  Percentage: {partition_usage.percent}%")
+    print(f"  Totaal grootte: {get_size(schijf_gebruik.total)}")
+    print(f"  Gebruikt: {get_size(schijf_gebruik.used)}")
+    print(f"  Vrij: {get_size(schijf_gebruik.free)}")
+    print(f"  Percentage: {schijf_gebruik.percent}%")
